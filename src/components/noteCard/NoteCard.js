@@ -10,11 +10,9 @@ const customStyles = {
   width: "80px",
 };
 
-const NoteCard = ({ note }) => {
+const NoteCard = ({ note, handleDelete,isReload,setIsReload }) => {
   // console.log(note)
-  //you will receive isReload, setISReload as props and pass them to UpdateModal along with note._id 
-
-  
+  //you will receive isReload, setISReload as props and pass them to UpdateModal along with note._id
 
   return (
     <div className="col mt-5" style={{ position: "relative" }}>
@@ -34,10 +32,15 @@ const NoteCard = ({ note }) => {
         </div>
         <div className="card-footer d-flex justify-content-center">
           <div>
-            <button className="color-801336 btn btn-sm mx-2 ">delete</button>
+            <button
+              className="color-801336 btn btn-sm mx-2 "
+              onClick={() => handleDelete(note._id)}
+            >
+              delete
+            </button>
           </div>
           {/* <button>update</button> */}
-          <UpdateModal />
+          <UpdateModal setIsReload={setIsReload} isReload={isReload} id={note._id}/>
         </div>
       </div>
     </div>
